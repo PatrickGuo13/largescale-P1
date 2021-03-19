@@ -1,4 +1,5 @@
 ##1.
+```
 #k=2:
 ==================================
 found. count:1
@@ -52,7 +53,9 @@ found. count:1
 Time elapsed:46s
 number of trials:10000000
 ==================================
+```
 ##2.
+```
 #k=7:
 ==================================
 found. count:2
@@ -60,6 +63,7 @@ found. count:2
 Time elapsed:3529s
 number of trials:1000000000
 ==================================
+```
 2. As the difficulty level increases, the probability of finding nonce decreases. As we can see from
 the number of trials from k=2 to k=6, for every increment in k, number of trials would tend to increase by 10* in an exponential way.
 
