@@ -68,6 +68,7 @@ number of trials:1000000000
 the number of trials from k=2 to k=6, for every increment in k, number of trials would tend to increase by 10* in an exponential way.
 
 Configuration for case k=7:
+```
 Region
   us-central1
 Zone
@@ -122,19 +123,23 @@ Internal IP only
   No
 Image version
   2.0.7-debian10
+ ```
 
  ##3. 
  modify the original line 56 - 59
+ ```
   val nonce = sc.range(0, trials).mapPartitionsWithIndex((indx, iter) => {
   val rand = new scala.util.Random(indx + seed)
   iter.map(x => rand.nextInt(Int.MaxValue - 1) + 1)
 })
+```
 to the following:
+```
 val nonce = sc.range(0, trials).mapPartitionsWithIndex((indx, iter) => {
     val rand = 0
     def incr(): Long=value.incrementAndGet
     rand=rand.incr()
     iter.map(x => rand.nextInt(Int.MaxValue - 1) + 1)
   })
-
+```
   This method would be less efficiency because the hash function of hexadecimal is not evenly distributed from 1 to 2^(32)
